@@ -4,9 +4,11 @@ from LocalData import *
 
 class Login:
     def __init__(self, local_data):
+        # Initialize the Login object with local data
         self.local_data = local_data
 
     def login_employee(self):
+        # Login an existing employee
         print("--- You are logging in as an existing Employee ---")
         attempts = 0
 
@@ -25,9 +27,10 @@ class Login:
             print(f"Incorrect username or password. You have {3 - attempts} attempts left.")
 
         print("Exiting app due to multiple incorrect login attempts.\n")
-        #sys.exit()
+        sys.exit()
 
     def get_input(self, prompt, error_message):
+        # Get input from the user with validation
         while True:
             user_input = input(prompt)
             if user_input.strip():  # check if input is not empty

@@ -1,11 +1,11 @@
-from Employee import Employee
-
 class LocalData:
     def __init__(self, filename):
+        # Initialize the LocalData object with a filename
         self.filename = filename
         self.employees = self.load_employees()
 
     def load_employees(self):
+        # Load employees from a file
         try:
             with open(self.filename, 'r') as file:
                 employees = []
@@ -34,6 +34,7 @@ class LocalData:
             return []
 
     def add_employee(self, employee):
+        # Add a new employee to the local data
         if not isinstance(employee, Employee):
             raise ValueError("Invalid employee object")
         self.employees.append({
@@ -51,6 +52,7 @@ class LocalData:
         self.save_employees()
 
     def save_employees(self):
+        # Save the employees to a file
         with open(self.filename, 'w') as file:
             for employee in self.employees:
                 file.write(','.join([
@@ -67,6 +69,7 @@ class LocalData:
                 ]) + '\n')
 
     def find_employee(self, username, password=None):
+        # Find an employee by username and password
         for employee in self.employees:
             if employee['username'] == username:
                 if password is not None and employee['password'] == password:
@@ -74,6 +77,7 @@ class LocalData:
                 elif password is None:
                     return employee
         return None
-    
+
     def get_all_employees(self):
+        # Get all employees
         return self.employees

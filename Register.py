@@ -2,9 +2,11 @@ from Employee import *
 
 class Register:
     def __init__(self, local_data):
+        # Initialize the Register object with local data
         self.local_data = local_data
 
     def register_employee(self):
+        # Register a new employee
         username = self.get_input("Enter your username: ", "Invalid username. Please try again.")
         if self.local_data.find_employee(username):
             print("Username already exists. Please choose a different username.")
@@ -20,13 +22,16 @@ class Register:
         email_address = self.get_input("Enter your email address: ", "Invalid email address. Please try again.")
         address = self.get_input("Enter your address: ", "Invalid address. Please try again.")
 
+        # Create a new Employee object with the input data
         employee = Employee(first_name, last_name, age, salary, phone_number, email_address, address, username, password)
         print(f"ID: {employee.get_id()}, First Name: {employee.get_first_name()}, Last Name: {employee.get_last_name()}, Age: {employee.get_age()}, Salary: {employee.get_salary()}, Phone Number: {employee.get_phone_number()}, Email Address: {employee.get_email_address()}, Address: {employee.get_address()}, Username: {employee.get_username()}")
 
+        # Add the employee to the local data
         self.local_data.add_employee(employee)
         print("Employee registered successfully!")
 
     def get_input(self, prompt, error_message):
+        # Get input from the user with validation
         while True:
             user_input = input(prompt)
             if user_input.strip():
@@ -35,6 +40,7 @@ class Register:
                 print(error_message)
 
     def get_confirm_password(self, password):
+        # Get confirm password from the user with validation
         while True:
             confirm_password = input("Confirm your password: ")
             if confirm_password.strip():
@@ -46,6 +52,7 @@ class Register:
                 print("Invalid confirm password. Please try again.")
 
     def get_positive_integer(self, prompt, error_message):
+        # Get a positive integer input from the user with validation
         while True:
             try:
                 user_input = int(input(prompt))
@@ -57,6 +64,7 @@ class Register:
                 print(error_message)
 
     def get_positive_float(self, prompt, error_message):
+        # Get a positive float input from the user with validation
         while True:
             try:
                 user_input = float(input(prompt))
