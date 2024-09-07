@@ -1,3 +1,5 @@
+from Employee import *
+
 class LocalData:
     def __init__(self, filename):
         # Initialize the LocalData object with a filename
