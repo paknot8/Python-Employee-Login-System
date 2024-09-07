@@ -3,7 +3,7 @@ from Employee import *
 from Login import Login
 from Register import Register
 from LocalData import LocalData
-
+#TODO Still need to add Logout when logged in, and say Hi, firstname lastname then whenb exit Goodbye.
 # Main function: entry point of the program
 # Initializes local data storage, creates instances of Login and Register classes,
 # and enters an infinite loop to display the start menu and process user input.
