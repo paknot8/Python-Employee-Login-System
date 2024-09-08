@@ -31,6 +31,7 @@ def main():
             is_logged_in = login_to_account.login_employee()
             if is_logged_in:
                 print("You are now logged in!")
+                account_logged_in()
         elif choice == "2":
             register_new_account.register_employee()
         elif choice == "3":
@@ -58,6 +59,28 @@ def test_local_data(local_data):
     for employee in local_data.get_all_employees():
         print(employee)
 
+def account_logged_in():
+    while True:
+        print("You are logged in. Please select an option:")
+        print("0. Logout")
+        print("1. View All Employees")
+        print("2. Exit App")
+        choice = input(": ")
+        if choice == "0":
+            global is_logged_in
+            is_logged_in = False
+            print("You are now logged out.")
+            break
+        elif choice == "1":
+            print("--- All registered Employees: ---")
+            local_data = LocalData('userData.txt')
+            test_local_data(local_data)
+            print("---------------------------------")
+        elif choice == "2":
+            print("Goodbye!")
+            sys.exit()
+        else:
+            print("--- Invalid choice! Please select a valid option. ---")
+
 if __name__ == "__main__":
     main()
-

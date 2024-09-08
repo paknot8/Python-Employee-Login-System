@@ -1,6 +1,5 @@
 import sys
 
-
 class Login:
     def __init__(self, local_data):
         # Initialize the Login object with local data
