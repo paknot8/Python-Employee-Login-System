@@ -1,6 +1,5 @@
 import sys
-from Employee import *
-from LocalData import *
+
 
 class Login:
     def __init__(self, local_data):
@@ -21,7 +20,7 @@ class Login:
             if employee:
                 print(f"Welcome, {employee['first_name']} {employee['last_name']}!")
                 print(f"ID: {employee['id']}, First Name: {employee['first_name']}, Last Name: {employee['last_name']}, Age: {employee['age']}, Salary: {employee['salary']}, Phone Number: {employee['phone_number']}, Email Address: {employee['email_address']}, Address: {employee['address']}, Username: {employee['username']}")
-                return
+                return True  # Successfully logged in
 
             attempts += 1
             print(f"Incorrect username or password. You have {3 - attempts} attempts left.")

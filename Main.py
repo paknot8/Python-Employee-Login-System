@@ -3,13 +3,19 @@ from Employee import *
 from Login import Login
 from Register import Register
 from LocalData import LocalData
-#TODO Still need to add Logout when logged in, and say Hi, firstname lastname then whenb exit Goodbye.
+
+# Global variable to track login status
+is_logged_in = False
+
 # Main function: entry point of the program
 # Initializes local data storage, creates instances of Login and Register classes,
 # and enters an infinite loop to display the start menu and process user input.
 def main():
+    global is_logged_in
+
     local_data = LocalData('userData.txt')
     login_to_account = Login(local_data)
+
     register_new_account = Register(local_data)
 
     while True:
@@ -18,15 +24,22 @@ def main():
         print("\n")
 
         if choice == "0":
+            if is_logged_in:
+                print("Goodbye!")
             sys.exit()
         elif choice == "1":
-            login_to_account.login_employee()
+            is_logged_in = login_to_account.login_employee()
+            if is_logged_in:
+                print("You are now logged in!")
         elif choice == "2":
             register_new_account.register_employee()
         elif choice == "3":
-            print("--- All registered Employees: ---")
-            test_local_data(local_data)
-            print("---------------------------------")
+            if is_logged_in:
+                print("--- All registered Employees: ---")
+                test_local_data(local_data)
+                print("---------------------------------")
+            else:
+                print("You need to log in to view this information.")
         else:
             print("--- Invalid choice! Please select a valid option. ---")
 
@@ -38,7 +51,7 @@ def display_start_menu():
     print("1. Employee Login")
     print("2. Employee Register")
     print("3. View All Employees")
-    print("--->>> Please make a select <<<---")
+    print("--->>> Please make a selection <<<---")
 
 # Tests the local data by printing out all registered employees in the system.
 def test_local_data(local_data):
@@ -47,3 +60,4 @@ def test_local_data(local_data):
 
 if __name__ == "__main__":
     main()
+
