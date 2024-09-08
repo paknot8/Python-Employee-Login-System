@@ -2,12 +2,21 @@ from Employee import *
 
 class LocalData:
     def __init__(self, filename):
-        # Initialize the LocalData object with a filename
+        """
+        Initialize the LocalData object with a filename.
+
+        This method sets up the LocalData object with a filename and loads the employees from the file.
+        """
         self.filename = filename
         self.employees = self.load_employees()
 
     def load_employees(self):
-        # Load employees from a file
+        """
+        Load employees from a file.
+
+        This method reads the employees from the file specified in the filename attribute and returns them as a list of dictionaries.
+        Each dictionary represents an employee with their id, first name, last name, age, salary, phone number, email address, address, username, and password.
+        """
         try:
             with open(self.filename, 'r') as file:
                 employees = []
@@ -36,7 +45,12 @@ class LocalData:
             return []
 
     def add_employee(self, employee):
-        # Add a new employee to the local data
+        """
+        Add a new employee to the local data.
+
+        This method adds a new employee to the list of employees and saves the updated list to the file.
+        It checks if the employee object is valid before adding it to the list.
+        """
         if not isinstance(employee, Employee):
             raise ValueError("Invalid employee object")
         self.employees.append({
@@ -54,7 +68,12 @@ class LocalData:
         self.save_employees()
 
     def save_employees(self):
-        # Save the employees to a file
+        """
+        Save the employees to a file.
+
+        This method writes the list of employees to the file specified in the filename attribute.
+        It overwrites any existing data in the file.
+        """
         with open(self.filename, 'w') as file:
             for employee in self.employees:
                 file.write(','.join([
@@ -71,7 +90,13 @@ class LocalData:
                 ]) + '\n')
 
     def find_employee(self, username, password=None):
-        # Find an employee by username and password
+        """
+        Find an employee by username and password.
+
+        This method searches for an employee with the specified username and password in the list of employees.
+        If a password is provided, it checks if the password matches the employee's password.
+        If no password is provided, it returns the employee object if the username matches.
+        """
         for employee in self.employees:
             if employee['username'] == username:
                 if password is not None and employee['password'] == password:
@@ -81,5 +106,9 @@ class LocalData:
         return None
 
     def get_all_employees(self):
-        # Get all employees
+        """
+        Get all employees.
+
+        This method returns the list of all employees.
+        """
         return self.employees
