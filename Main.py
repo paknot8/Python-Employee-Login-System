@@ -33,7 +33,7 @@ def main():
 # Displays the start menu to the console, showing available options to the user.
 def display_start_menu():
     print("\n")
-    print("--- Welcome to the Zoo Management System ---")
+    print("--- Welcome to the Admin Login System ---")
     print("0. Exit App")
     print("1. Employee Login")
     print("2. Employee Register")
