@@ -7,13 +7,12 @@ from LocalData import LocalData
 # Global variable to track login status
 is_logged_in = False
 
-# Main function: entry point of the program
 # Initializes local data storage, creates instances of Login and Register classes,
 # and enters an infinite loop to display the start menu and process user input.
 def main():
     global is_logged_in
 
-    local_data = LocalData('userData.txt')
+    local_data = LocalData('userData.txt') # Data is saved in a txt file.
     login_to_account = Login(local_data)
 
     register_new_account = Register(local_data)
@@ -59,6 +58,7 @@ def test_local_data(local_data):
     for employee in local_data.get_all_employees():
         print(employee)
 
+# Handles the account menu after a successful login.
 def account_logged_in():
     while True:
         print("You are logged in. Please select an option:")
